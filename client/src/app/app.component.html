@@ -1,0 +1,99 @@
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1>Catalogo de Juegos</h1>
+		<h2>No de registros:{{juegos.length}}</h2>
+	</div>
+	<div class="row">
+		<div class="col-sm-7 col-sm-offset-1">
+			<table class="table table striped">
+				<thead class="thead-dark">
+					<tr class="info">
+						<th>Id</th>
+						<th>Nombre del  Juego</th>
+						<th>Lanzamiento</th>
+						<th>Compañía</th>
+						<th>Género</th>
+					</tr>
+				</thead>
+				
+				<tr *ngFor="let j of juegos" (click)="selectJuego(j)">
+					<td>{{j._id}}</td>
+					<td>{{j.nombre}}</td>
+					<td>{{j.lanzamiento}}</td>
+					<td>{{j.compania}}</td>
+                    <td>{{j.genero}}</td>
+
+				</tr>
+			</table>
+		</div>
+		<!-- inicio del formulario-->
+		<div class="col-sm-4 col-sm-offset-1 text-center">
+			<form #juegoForm="ngForm" (ngSubmit)="onSubmit(juegoForm)">
+				<div class="form-group">
+					<label>Nombre del juego:</label>
+					<input type="text" name="nombre" class="form-control" id="nombre" [(ngModel)]="juego.nombre" #nombre="ngModel" required/>
+					<br>
+					<label>Lanzamiento</label>
+					<input type="text" name="lanzamiento" class="form-control" id="lanzamiento" [(ngModel)]="juego.lanzamiento" #lanzamiento="ngModel" required/>
+					<br>
+					<label>Compañía:</label>
+					<input type="text" name="compania" class="form-control" id="compania" [(ngModel)]="juego.compania" #compania="ngModel" 
+					 required/>
+					 <br>
+					 <label>Género:</label>
+					 <input type="text" name="genero" class="form-control" id="genero" [(ngModel)]="juego.genero" #genero="ngModel" required/>
+					<br>
+					<button type="submit" class="btn btn-success btn-lg" (click)="addJuego()">Registrar</button>
+					<button type="submit" class="btn btn-warning btn-lg" (click)="editJuego()">Modificar</button>
+					<button type="submit" class="btn btn-danger btn-lg" (click)="confirm()">Eliminar</button>
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1>Catálogo de Plataformas</h1>
+		<h2>No de registros:{{plataformas.length}}</h2>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-1">
+			<table class="table table striped">
+				<thead class="thead-dark">
+					<tr class="info">
+						<th>Nombre Plataforma</th>
+						<th>Id del juego</th>
+					</tr>
+				</thead>
+				
+				<tr *ngFor="let p of plataformas" (click)="selectPlataforma(p)">
+					<td>{{p.nombrep}}</td>
+					<td>{{p.id_j}}</td>
+
+				</tr>
+			</table>
+		</div>
+		<!-- inicio del formulario-->
+		<div class="col-sm-4 col-sm-offset-1 text-center">
+			<form #plataformaForm="ngForm" (ngSubmit)="onSubmit(plataformaForm)">
+				<div class="form-group">
+					<label>Nombre Plataforma:</label>
+					<input type="text" name="nombrep" class="form-control" id="nombrep" [(ngModel)]="plataforma.nombrep" #nombre="ngModel" required/>
+				    <br>
+					<label>Id del juego:</label>
+					<input type="text" name="id_j" class="form-control" id="id_j" [(ngModel)]="plataforma.id_j" #nombre="ngModel" required/>
+				    <br>
+					<button type="submit" class="btn btn-success btn-lg" (click)="addPlataforma()">Registrar</button>
+					<button type="submit" class="btn btn-warning btn-lg" (click)="editPlataforma()">Modificar</button>
+					<button type="submit" class="btn btn-danger btn-lg" (click)="confirm2()">Eliminar</button>
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
